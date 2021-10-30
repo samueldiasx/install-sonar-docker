@@ -1,23 +1,71 @@
-## PASSO A PASSO
+# Instalação do Sonar utilizando Docker
 
-1 - git clone https://github.com/samueldiasx/install-sonar-docker.git
+### Passo a passo
+1 - Clone Repositório 
+```sh
+git clone https://github.com/samueldiasx/install-sonar-docker.git
+```
+```sh
+cd install-sonar-docker
+```
+```sh
+rm -rf .git README.md
+```
 
-2 - cd install-sonar-docker
+2 - Copiar para o **"projeto desejado"**
+```sh
+cp -r . /pasta-destino
+```
 
-3 - rm -rf .git && rm -rf README.md
+3 - configurar o arquivo de configuração do sonar **sonar-project.properties**
+```dosini
+# Valores de exemplos abaixo
+sonar.projectKey=key_project
+sonar.projectName=name_project
+sonar.projectVersion=1.0.0
+sonar.host.url=http://sonarqube:9000
+sonar.sources=app
+sonar.language=php
+sonar.sourceEncoding=UTF-8
+sonar.login=admin
+sonar.password=admin
+sonar.php.coverage.reportPaths=storage/coverage/clover-coverage.xml
+sonar.php.tests.reportPath=storage/coverage/junit-report.xml
+sonar.exclusions=
+```
 
-4 - cp . /pasta-destino
+4 - caso desejar, pode mudar a rede no arquivo **docker-compose.yml** (opcional)
+```sh
+...
+networks:
+    # nome da rede abaixo, neste exemplo se chama "projeto"
+    # caso mude, não esquecer de mudar também nos serviços
+    projeto:
+        driver: bridge
+```
 
-5 - remover sufixo .example do arquivo de configuração do sonar
+5 - subir os containers
+```sh
+docker-compose up -d --build
+```
 
-6 - configurar o arquivo de configuração do sonar
+6 - inserir script "test-sonar" no arquivo **composer.json**
+```json
+"scripts": {
+        ..., 
+        // não esqueça a virgula antes do ultimo objeto
+        "test-sonar": "php artisan test --coverage-clover ./storage/coverage/clover-coverage.xml --log-junit ./storage/coverage/junit-report.xml  && sonar-scanner"
+},
+```
 
-7 - caso deseja mude a rede no arquivo docker compose (opcional)
+7 - Acessar o container
+```sh
+docker exec -it "valor do APP_NAME dentro do arquivo .env" sh
+```
 
-8 - rodar comando docker-compose up -d --build
+8 - rodar teste no container
+```sh
+ composer test-sonar
+```
 
-7 - inserir script  "test-sonar": "php artisan test --coverage-clover ./storage/coverage/clover-coverage.xml --log-junit ./storage/coverage/junit-report.xml  && sonar-scanner" no arquivo composer.json
-
-8 - rodar o seguinte comando dentro do container: composer test-sonar
-
-## tchau e obrigado
+### dê uma estrela para ajudar :) , obrigado
