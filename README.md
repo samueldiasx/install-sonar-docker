@@ -4,7 +4,7 @@
 
 2 - cd install-sonar-docker
 
-3 - rm -rf .git
+3 - rm -rf .git && rm -rf README.md
 
 4 - cp . /pasta-destino
 
