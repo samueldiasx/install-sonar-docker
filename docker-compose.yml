@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+    #image docker
+    php:
+        build: 
+          context: .
+          dockerfile: Dockerfile
+        image: ${APP_NAME}
+        container_name: ${APP_NAME}
+        volumes: 
+          - ./:/var/www/  #aqui será a pasta onde localiza o ${APP_NAME} laravel/php
+        networks: 
+          - projeto
+
+    sonarqube:
+        container_name: sonarqube
+        image: sonarqube:lts-community
+        ports:
+            - "9000:9000"
+        networks:
+            - projeto
+
+networks:
+    projeto:
+        driver: bridge
+
