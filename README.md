@@ -69,7 +69,7 @@ docker exec -it "valor do APP_NAME dentro do arquivo .env" sh
 
 8 - rodar teste no container
 ```sh
- composer test-sonar
+ composer install && composer test-sonar
 ```
 
 ### dê uma estrela para ajudar :) , obrigado
