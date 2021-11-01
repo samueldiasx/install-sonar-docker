@@ -1,6 +1,8 @@
 # Instalação do Sonar utilizando Docker
 
 ### Passo a passo
+**OBS: certifique que o Docker e Docker Compose estejam corretamente instalados na sua máquina**
+**OBS: certifique que a váriavel de ambiente APP_NAME no arquivo .env esteja com todas as letras minusculas**
 1 - Clone Repositório 
 ```sh
 git clone https://github.com/samueldiasx/install-sonar-docker.git
