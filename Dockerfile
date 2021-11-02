@@ -22,4 +22,7 @@ RUN wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-s
     mv sonar-scanner-4.6.2.2472 /usr/lib/sonar-scanner && \
     ln -s /usr/lib/sonar-scanner/bin/sonar-scanner /usr/local/bin/sonar-scanner
     
+#increase memory limit 
+RUN echo 'memory_limit = 1024M' >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini;
+
 WORKDIR /var/www
