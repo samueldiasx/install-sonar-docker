@@ -1,18 +1,63 @@
 version: '3'
 
 services:
-    #image docker
+    nginx:
+    image: nginx:stable-alpine
+    container_name: nginx
+    ports:
+      - "8989:80"
+    volumes:
+      - ./:/var/www/html
+      - ./.nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+      - mysql
+    networks:
+      - laravel_app
+
     php:
-        build: 
-          context: .
-          dockerfile: Dockerfile
-        image: ${APP_NAME}
-        restart: unless-stopped
-        container_name: ${APP_NAME}
-        volumes: 
-          - ./:/var/www/  #aqui será a pasta onde localiza o ${APP_NAME} laravel/php
-        networks: 
-          - projeto
+      build:
+        context: .
+        dockerfile: Dockerfile
+      container_name: php
+      volumes:
+        - ./:/var/www/html
+      ports:
+        - "9001:9000"
+      networks:
+        - laravel_app
+
+    mysql:
+      image: mysql:5.7.22
+      container_name: mysql
+      restart: always
+      ports:
+        - "3308:3306"
+      environment:
+        MYSQL_DATABASE: ${DB_DATABASE}
+        MYSQL_USER: ${DB_USERNAME}
+        MYSQL_PASSWORD: ${DB_PASSWORD}
+        MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      volumes:
+        - ./.mysql:/var/lib/mysql
+      networks:
+        - laravel_app
+
+    npm:
+      image: node:latest
+      container_name: npm
+      volumes:
+        - ./:/var/www/html
+      working_dir: /var/www/html
+      entrypoint: ['npm']
+
+    redis:
+      image: redis:latest
+      container_name: redis
+      ports:
+        - "6380:6379"
+      networks:
+        - laravel_app
 
     sonarqube:
         container_name: sonarqube
