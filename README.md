@@ -59,6 +59,31 @@ rm -rf .git README.md
 cp -r . /pasta-destino
 ```
 
+3 - Atualize as variáveis de ambiente do arquivo .env
+
+```dosini
+APP_NAME=laravel_app
+APP_URL=http://localhost:8989
+
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=nome_que_desejar_db
+DB_USERNAME=nome_usuario
+DB_PASSWORD=senha_aqui
+
+CACHE_DRIVER=redis
+QUEUE_CONNECTION=redis
+SESSION_DRIVER=redis
+
+REDIS_HOST=redis
+REDIS_PASSWORD=null
+REDIS_PORT=6379
+
+UID=uid_username_maquina_local
+GID=gid_username_maquina_local
+```
+
 3 - configurar o arquivo de configuração do sonar **sonar-project.properties**
 
 ```dosini
