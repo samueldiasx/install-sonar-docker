@@ -3,7 +3,7 @@ version: '3'
 services:
     nginx:
         image: nginx:stable-alpine
-        container_name: laravel_app_nginx
+        container_name: ${APP_NAME}_nginx
         ports:
         - "8989:80"
         volumes:
@@ -20,7 +20,7 @@ services:
       build:
         context: .
         dockerfile: Dockerfile
-      container_name: laravel_app_php
+      container_name: ${APP_NAME}_php
       restart: unless-stopped
       volumes:
         - ./:/var/www/html
@@ -31,7 +31,7 @@ services:
 
     mysql:
       image: mysql:5.7.22
-      container_name: laravel_app_mysql
+      container_name: ${APP_NAME}_mysql
       restart: always
       ports:
         - "3308:3306"
@@ -47,7 +47,7 @@ services:
 
     npm:
       image: node:18.5.0
-      container_name: laravel_app_npm
+      container_name: ${APP_NAME}_npm
       ports:
         - "3009:3009"
       volumes:
@@ -57,14 +57,14 @@ services:
 
     redis:
       image: redis:latest
-      container_name: laravel_app_redis
+      container_name: ${APP_NAME}_redis
       ports:
         - "6380:6379"
       networks:
         - laravel_app
 
     sonarqube:
-        container_name: laravel_app_sonarqube
+        container_name: ${APP_NAME}_sonarqube
         image: sonarqube:lts-community
         restart: unless-stopped
         ports:
