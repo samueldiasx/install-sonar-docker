@@ -67,9 +67,17 @@ docker-compose up -d --build
 docker exec -it "valor do APP_NAME dentro do arquivo .env" sh
 ```
 
-8 - rodar teste no container
+8 - Rodar teste no container
 ```sh
  composer install && composer test-sonar
+```
+
+9 - Adicionr no .gitignore
+```sh
+/.mysql
+/.scannerwork
+/?
+/storage/coverage
 ```
 
 ### dê uma estrela para ajudar :) , obrigado
