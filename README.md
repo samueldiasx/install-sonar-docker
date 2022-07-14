@@ -88,4 +88,10 @@ docker exec -it "valor do APP_NAME dentro do arquivo .env" sh
 },
 ```
 
+11 - No arquivo .env informar o UID e GID do username da máquina local
+```sh
+UID=
+GID=
+```
+
 ### dê uma estrela para ajudar :) , obrigado
