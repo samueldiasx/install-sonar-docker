@@ -1,27 +1,34 @@
 # Instalação do Sonar utilizando Docker
 
-**OBS:** 
+**OBS:**
+
 - **Certifique que o Docker e Docker Compose estejam corretamente instalados na sua máquina**
 - **Certifique que a váriavel de ambiente APP_NAME no arquivo .env esteja com todas as letras minusculas**
 
-### Passo a passo
-1 - Clone Repositório 
+## Passo a passo
+
+1 - Clone Repositório
+
 ```sh
 git clone https://github.com/samueldiasx/install-sonar-docker.git
 ```
+
 ```sh
 cd install-sonar-docker
 ```
+
 ```sh
 rm -rf .git README.md
 ```
 
 2 - Copiar para o **"projeto desejado"**
+
 ```sh
 cp -r . /pasta-destino
 ```
 
 3 - configurar o arquivo de configuração do sonar **sonar-project.properties**
+
 ```dosini
 # Valores de exemplos abaixo
 sonar.projectKey=key_project
@@ -39,6 +46,7 @@ sonar.exclusions=
 ```
 
 4 - caso desejar, pode mudar a rede no arquivo **docker-compose.yml** (opcional)
+
 ```sh
 ...
 networks:
@@ -49,11 +57,13 @@ networks:
 ```
 
 5 - subir os containers
+
 ```sh
 docker-compose up -d --build
 ```
 
 6 - inserir script "test-sonar" no arquivo **composer.json**
+
 ```json
 "scripts": {
         ..., 
@@ -63,16 +73,19 @@ docker-compose up -d --build
 ```
 
 7 - Acessar o container
+
 ```sh
 docker exec -it "valor do APP_NAME dentro do arquivo .env" sh
 ```
 
 8 - Rodar teste no container
+
 ```sh
  composer install && composer test-sonar
 ```
 
 9 - Adicionr no .gitignore
+
 ```sh
 /.mysql
 /.scannerwork
@@ -81,6 +94,7 @@ docker exec -it "valor do APP_NAME dentro do arquivo .env" sh
 ```
 
 10 - Informar o host e a porta do servidor do Vite
+
 ```json
 "server": {
         "host": "0.0.0.0",
@@ -89,9 +103,16 @@ docker exec -it "valor do APP_NAME dentro do arquivo .env" sh
 ```
 
 11 - No arquivo .env informar o UID e GID do username da máquina local
+
 ```sh
 UID=
 GID=
 ```
 
-### dê uma estrela para ajudar :) , obrigado
+12 - Para rodar o NPM é só usar o seguinte comando
+
+```sh
+docker-compose run --service-ports npm run dev
+```
+
+## dê uma estrela para ajudar :) , obrigado
