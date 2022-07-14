@@ -184,6 +184,8 @@ docker-compose run --service-ports npm ...
 
 Se quiser usar o front-end do Laravel, só seguir este passo a passo do [Start kits]
 
+**OBS: Confira as configurações do arquivo vite.config.js**
+
 [Start kits]: <https://laravel.com/docs/9.x/starter-kits>
 
 ## dê uma estrela para ajudar :) , obrigado
