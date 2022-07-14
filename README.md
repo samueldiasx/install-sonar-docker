@@ -80,4 +80,12 @@ docker exec -it "valor do APP_NAME dentro do arquivo .env" sh
 /storage/coverage
 ```
 
+10 - Informar o host e a porta do servidor do Vite
+```json
+"server": {
+        "host": "0.0.0.0",
+        "port": 3009
+},
+```
+
 ### dê uma estrela para ajudar :) , obrigado
