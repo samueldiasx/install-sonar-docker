@@ -46,8 +46,10 @@ services:
         - laravel_app
 
     npm:
-      image: node:16.15.1
+      image: node:18.5.0
       container_name: laravel_app_npm
+      ports:
+        - "3009:3009"
       volumes:
         - ./:/var/www/html
       working_dir: /var/www/html
