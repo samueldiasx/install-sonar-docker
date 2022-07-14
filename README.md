@@ -22,7 +22,7 @@ cd laravel/
 ```
 
 ```sh
-rm -rf .git
+rm -rf .git .github/
 ```
 
 ```sh
@@ -162,6 +162,11 @@ Gerar a key do projeto Laravel
 php artisan key:generate
 ```
 
+Instalar pacotes NPM
+```sh
+docker-compose run npm install
+```
+
 10 - Informar o host e a porta do servidor do Vite
 
 ```sh
@@ -171,10 +176,14 @@ server: {
 },
 ```
 
-12 - Para rodar o NPM é só usar o seguinte comando
+12 - Para rodar o NPM com as portas é só usar o seguinte comando
 
 ```sh
 docker-compose run --service-ports npm ...
 ```
+
+Se quiser usar o front-end do Laravel, só seguir este passo a passo do [Start kits]
+
+[Start kits]: <https://laravel.com/docs/9.x/starter-kits>
 
 ## dê uma estrela para ajudar :) , obrigado
