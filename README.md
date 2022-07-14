@@ -164,17 +164,17 @@ php artisan key:generate
 
 10 - Informar o host e a porta do servidor do Vite
 
-```json
-"server": {
-        "host": "0.0.0.0",
-        "port": 3009
+```sh
+server: {
+        host: "0.0.0.0",
+        port: 3009
 },
 ```
 
 12 - Para rodar o NPM é só usar o seguinte comando
 
 ```sh
-docker-compose run --service-ports npm run dev
+docker-compose run --service-ports npm ...
 ```
 
 ## dê uma estrela para ajudar :) , obrigado
