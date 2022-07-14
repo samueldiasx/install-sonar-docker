@@ -33,6 +33,12 @@ git init
 cp .env.example cp .env
 ```
 
+3 - Primeiro commit
+```sh
+git add . 
+git commit -m 'first commit'
+```
+
 1 - Clone Repositório
 
 ```sh
