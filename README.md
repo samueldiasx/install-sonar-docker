@@ -14,6 +14,7 @@ git clone --branch 9.x git@github.com:laravel/laravel.git
 ```
 
 2 - Entrar na pasta do projeto Laravel, exclua o diretório .git, cria o diretório .git e copia o arquivo .env-example para o .env
+
 **OBS: Se desejar trocar o nome da pasta, fica a vontade :)**
 
 ```sh
