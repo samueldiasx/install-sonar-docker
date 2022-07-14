@@ -59,6 +59,12 @@ rm -rf .git README.md
 cp -r . /pasta-destino
 ```
 
+3 - Copiar o arquivo sonar-project.properties.example para sonar-project.properties
+
+```sh
+cp sonar-project.properties.example sonar-project.properties
+```
+
 3 - Atualize as variáveis de ambiente do arquivo .env
 
 ```dosini
@@ -113,6 +119,16 @@ networks:
         driver: bridge
 ```
 
+9 - Adicionr no .gitignore
+
+```sh
+/.mysql
+/.scannerwork
+/?
+/storage/coverage
+/sonar-project.properties
+```
+
 5 - subir os containers
 
 ```sh
@@ -138,16 +154,12 @@ docker exec -it "valor do APP_NAME dentro do arquivo .env" sh
 8 - Rodar teste no container
 
 ```sh
- composer install && composer test-sonar
+ composer install
 ```
 
-9 - Adicionr no .gitignore
-
+Gerar a key do projeto Laravel
 ```sh
-/.mysql
-/.scannerwork
-/?
-/storage/coverage
+php artisan key:generate
 ```
 
 10 - Informar o host e a porta do servidor do Vite
@@ -157,13 +169,6 @@ docker exec -it "valor do APP_NAME dentro do arquivo .env" sh
         "host": "0.0.0.0",
         "port": 3009
 },
-```
-
-11 - No arquivo .env informar o UID e GID do username da máquina local
-
-```sh
-UID=
-GID=
 ```
 
 12 - Para rodar o NPM é só usar o seguinte comando

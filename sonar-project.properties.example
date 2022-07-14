@@ -1,0 +1,12 @@
+sonar.projectKey=key_project
+sonar.projectName=name_project
+sonar.projectVersion=1.0.0
+sonar.host.url=http://sonarqube:9000
+sonar.sources=app
+sonar.language=php
+sonar.sourceEncoding=UTF-8
+sonar.login=admin
+sonar.password=admin
+sonar.php.coverage.reportPaths=storage/coverage/clover-coverage.xml
+sonar.php.tests.reportPath=storage/coverage/junit-report.xml
+sonar.exclusions=
